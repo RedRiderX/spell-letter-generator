@@ -4,33 +4,33 @@
   import rollDice from "./dice.js";
 
   const bagDistribition = Array(100);
-  bagDistribition.fill('A', 0);
-  bagDistribition.fill('B', 9);
-  bagDistribition.fill('C', 11);
-  bagDistribition.fill('D', 13);
-  bagDistribition.fill('E', 17);
-  bagDistribition.fill('F', 29);
-  bagDistribition.fill('G', 32);
-  bagDistribition.fill('H', 34);
-  bagDistribition.fill('I', 36);
-  bagDistribition.fill('J', 45);
-  bagDistribition.fill('K', 46);
-  bagDistribition.fill('L', 47);
-  bagDistribition.fill('M', 51);
-  bagDistribition.fill('N', 53);
-  bagDistribition.fill('O', 59);
-  bagDistribition.fill('P', 67);
-  bagDistribition.fill('Q', 69);
-  bagDistribition.fill('R', 70);
-  bagDistribition.fill('S', 76);
-  bagDistribition.fill('T', 80);
-  bagDistribition.fill('U', 86);
-  bagDistribition.fill('V', 90);
-  bagDistribition.fill('W', 92);
-  bagDistribition.fill('X', 94);
-  bagDistribition.fill('Y', 95);
-  bagDistribition.fill('Z', 97);
-  bagDistribition.fill('§', 98);
+  bagDistribition.fill("A", 0);
+  bagDistribition.fill("B", 9);
+  bagDistribition.fill("C", 11);
+  bagDistribition.fill("D", 13);
+  bagDistribition.fill("E", 17);
+  bagDistribition.fill("F", 29);
+  bagDistribition.fill("G", 32);
+  bagDistribition.fill("H", 34);
+  bagDistribition.fill("I", 36);
+  bagDistribition.fill("J", 45);
+  bagDistribition.fill("K", 46);
+  bagDistribition.fill("L", 47);
+  bagDistribition.fill("M", 51);
+  bagDistribition.fill("N", 53);
+  bagDistribition.fill("O", 59);
+  bagDistribition.fill("P", 67);
+  bagDistribition.fill("Q", 69);
+  bagDistribition.fill("R", 70);
+  bagDistribition.fill("S", 76);
+  bagDistribition.fill("T", 80);
+  bagDistribition.fill("U", 86);
+  bagDistribition.fill("V", 90);
+  bagDistribition.fill("W", 92);
+  bagDistribition.fill("X", 94);
+  bagDistribition.fill("Y", 95);
+  bagDistribition.fill("Z", 97);
+  bagDistribition.fill("§", 98);
   // console.log(bagDistribition);
   let bag = bagDistribition.slice();
   let tiles = [];
@@ -76,10 +76,10 @@
           min="1"
           max="4"
         />
-        <button on:click={rollTiles}>Roll {diceToRoll}d6</button>
+        <button class="rollButton" on:click={rollTiles}>Roll {diceToRoll}d6</button>
       </div>
       <div class="tiles tiles_pool">
-        <div class="placeholder">Tiles Go Here</div>
+        <div class="placeholder">Roll Tiles</div>
         <div class="list list_pool draggable-container">
           {#each tiles as tile}
             <div class="tile">{tile}</div>
@@ -89,7 +89,7 @@
       <div class="tiles tiles_input">
         <div class="list_input__wrapper">
           <div class="list list_input draggable-container" />
-          <div class="placeholder">Spell Goes Here</div>
+          <div class="placeholder">Drag Them Here</div>
           <div class="list_input__texture" />
         </div>
       </div>
@@ -98,7 +98,9 @@
     </div>
   </div>
   <div class="copyright">
-    Spell: The RPG is © 2015 Taylor Smith and Whimsy Machine Media. Developed by <a href="https://twitter.com/RedRiderX">Red</a> under GPL.
+    Spell: The RPG is © 2015 Taylor Smith and Whimsy Machine Media. Developed by <a
+      href="https://twitter.com/RedRiderX">Red</a
+    > under GPL.
   </div>
 </main>
 
@@ -110,7 +112,8 @@
       rgba(145, 92, 147, 1) 42%,
       rgba(69, 44, 70, 1) 100%
     );
-    color: #fff;min-height: 100vh;
+    color: #fff;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -161,11 +164,19 @@
     line-height: 1.6rem;
     padding-bottom: 0.2rem;
   }
-  button {
+  .rollButton {
     padding: 0.5rem;
     /* font-size: 1.2rem; */
     text-transform: uppercase;
     margin: 0 1rem;
+    border-radius: 7px;
+    background: #CB566E;
+    color: white;
+    border: 1px solid #7E3544;
+  }
+  .rollButton:hover,
+  .rollButton:active {
+    background: #f48796;
   }
   .logo {
     display: inline-block;
@@ -243,7 +254,7 @@
   }
   .placeholder {
     position: absolute;
-    top: calc(50% - 0.9rem);
+    top: calc(50% - 0.7rem);
     font-size: 1.5rem;
     text-align: center;
     left: 0;
@@ -251,6 +262,7 @@
     font-family: "Fredericka the Great", serif;
     color: black;
     font-weight: bold;
+    user-select: none;
   }
   .copyright {
     margin: 2rem 1rem;
