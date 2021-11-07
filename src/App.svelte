@@ -76,10 +76,16 @@
           min="1"
           max="4"
         />
-        <button class="rollButton" on:click={rollTiles}>Roll {diceToRoll}d6</button>
+        <button class="rollButton" on:click={rollTiles}
+          >Roll {diceToRoll}d6</button
+        >
       </div>
       <div class="tiles tiles_pool">
-        <div class="placeholder">Roll Tiles</div>
+        <div class="placeholder">
+          <img src="roll-flourish.svg" alt="" class="flourish" /><span
+            >Roll Tiles</span
+          ><img src="roll-flourish.svg" alt="" class="flourish flourish_flip" />
+        </div>
         <div class="list list_pool draggable-container">
           {#each tiles as tile}
             <div class="tile">{tile}</div>
@@ -89,7 +95,15 @@
       <div class="tiles tiles_input">
         <div class="list_input__wrapper">
           <div class="list list_input draggable-container" />
-          <div class="placeholder">Drag Them Here</div>
+          <div class="placeholder">
+            <img src="spell-flourish.svg" alt="" class="flourish" /><span
+              >Drag Them Here</span
+            ><img
+              src="spell-flourish.svg"
+              alt=""
+              class="flourish flourish_flip"
+            />
+          </div>
           <div class="list_input__texture" />
         </div>
       </div>
@@ -98,19 +112,37 @@
     </div>
   </div>
   <div class="copyright">
-    Spell: The RPG is © 2015 Taylor Smith and Whimsy Machine Media. Developed by <a
-      href="https://twitter.com/RedRiderX">Red</a
-    > under GPL.
+    Spell: The RPG is © 2015 Taylor Smith and <a
+      href="https://whimsymachinegames.com/"
+      ><img
+        src="whimsy-machine-logo.svg"
+        alt="Whimsy Machine Media"
+        class="logo_wm"
+      /></a
+    >
+    &bull; Developed by <a href="https://twitter.com/RedRiderX">Red</a>
   </div>
 </main>
 
+<svg width="0px" height="0px" style="display: block;">
+  <filter id="wavy2">
+    <feTurbulence
+      x="0"
+      y="0"
+      baseFrequency="0.02"
+      numOctaves="5"
+      seed={Date.now().toString().slice(-5)}
+    />
+    <feDisplacementMap in="SourceGraphic" scale="20" />
+  </filter>
+</svg>
+
 <style>
   .app {
-    background: #915c93;
     background: radial-gradient(
-      circle,
-      rgba(145, 92, 147, 1) 42%,
-      rgba(69, 44, 70, 1) 100%
+      closest-side,
+      rgb(145, 92, 147) -18%,
+      rgb(69, 44, 70) 97%
     );
     color: #fff;
     min-height: 100vh;
@@ -170,9 +202,9 @@
     text-transform: uppercase;
     margin: 0 1rem;
     border-radius: 7px;
-    background: #CB566E;
+    background: #cb566e;
     color: white;
-    border: 1px solid #7E3544;
+    border: 1px solid #7e3544;
   }
   .rollButton:hover,
   .rollButton:active {
@@ -192,17 +224,18 @@
     justify-content: center;
   }
   .list {
+    position: relative;
+    z-index: 3;
     display: flex;
     justify-content: center;
     min-height: 5rem;
   }
   .list_pool {
-    position: relative;
     flex-flow: row wrap;
   }
   .list_input__wrapper {
     position: relative;
-    flex: 0 1 17rem;
+    flex: 0 1 23rem;
     /* background: #8923126e;
     box-shadow: -1px 0px 5px #00000063 inset; */
     min-height: 5rem;
@@ -226,8 +259,6 @@
   }
 
   .list_input {
-    position: relative;
-    z-index: 2;
     /* flex: 0 1 10rem;
     background: #8923126e;
     box-shadow: -1px 0px 5px #00000063 inset;
@@ -236,7 +267,7 @@
     margin: 1rem;
     filter: url(#wavy2); */
   }
-  .list_input:global(.draggable-container--over) + .list_input__texture {
+  .list_input:global(.draggable-container--over) ~ .list_input__texture {
     background: #e47a8b;
   }
   .tile {
@@ -254,8 +285,9 @@
   }
   .placeholder {
     position: absolute;
-    top: calc(50% - 0.7rem);
-    font-size: 1.5rem;
+    z-index: 2;
+    top: calc(50% - 0.9rem);
+    font-size: 1.7rem;
     text-align: center;
     left: 0;
     right: 0;
@@ -263,11 +295,40 @@
     color: black;
     font-weight: bold;
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .placeholder span {
+    margin: 0 0.3rem;
+  }
+  .flourish {
+    width: 3rem;
+  }
+  .flourish_flip {
+    transform: scaleX(-1);
+  }
+  .tiles_pool .placeholder {
+    align-items: baseline;
+    margin-top: -0.6rem;
+  }
+  .tiles_pool .placeholder span {
+    margin: 0 -0.2rem;
+  }
+  .tiles_pool .flourish {
+    width: 2rem;
   }
   .copyright {
     margin: 2rem 1rem;
+    width: 100%;
+    text-align: center;
   }
   .copyright a {
     color: white;
+  }
+  .logo_wm {
+    display: inline-block;
+    max-width: 5rem;
+    vertical-align: middle;
   }
 </style>
