@@ -98,7 +98,7 @@
     </div>
   </div>
   <div class="copyright">
-    Spell: The RPG is © 2015 Taylor Smith and Whimsy Machine Media. Developed by <a href="https://twitter.com/RedRiderX">Red</a>.
+    Spell: The RPG is © 2015 Taylor Smith and Whimsy Machine Media. Developed by <a href="https://twitter.com/RedRiderX">Red</a> under GPL.
   </div>
 </main>
 
